@@ -55,3 +55,56 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+    // --- FAQ Accordion ---
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', () => {
+            // Optional: Close others
+            faqItems.forEach(other => {
+                if (other !== item && other.classList.contains('active')) {
+                    other.classList.remove('active');
+                    const otherAnswer = other.querySelector('.faq-answer');
+                    otherAnswer.style.maxHeight = 0;
+                }
+            });
+
+            // Toggle current
+            item.classList.toggle('active');
+            
+            const answer = item.querySelector('.faq-answer');
+            if (item.classList.contains('active')) {
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+            } else {
+                answer.style.maxHeight = 0;
+            }
+        });
+    });
+
+    // --- Carousel Logic ---
+    const track = document.getElementById('serviceCarousel');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    if (track && prevBtn && nextBtn) {
+        prevBtn.addEventListener('click', () => {
+            track.scrollBy({ left: -350, behavior: 'smooth' });
+        });
+
+        nextBtn.addEventListener('click', () => {
+            track.scrollBy({ left: 350, behavior: 'smooth' });
+        });
+        
+        // Auto-scroll loop for magnificence
+        let autoScroll = setInterval(() => {
+             if (track.scrollLeft + track.offsetWidth >= track.scrollWidth) {
+                 track.scrollTo({ left: 0, behavior: 'smooth' });
+             } else {
+                 track.scrollBy({ left: 350, behavior: 'smooth' });
+             }
+        }, 4000); // Scroll every 4 seconds
+
+        track.addEventListener('mouseenter', () => clearInterval(autoScroll));
+    }

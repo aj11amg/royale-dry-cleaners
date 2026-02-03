@@ -1,0 +1,1484 @@
+/* --- PREMIUM LIQUID METAL BUTTONS (CSS Simulation) --- */
+
+.liquid-metal-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    /* Fixed height to prevent squishing */
+    height: 54px; 
+    padding: 0 40px;
+    border-radius: 9999px; /* Full pill */
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    overflow: hidden;
+    
+    /* Typography */
+    color: white;
+    font-family: var(--font-heading, serif);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    
+    /* Depth & 3D Structure */
+    box-shadow: 
+        0 10px 20px -5px rgba(0,0,0,0.5),
+        0 5px 10px rgba(0,0,0,0.3),
+        inset 0 2px 2px rgba(255,255,255,0.4), /* Sharp top highlight */
+        inset 0 -4px 10px rgba(0,0,0,0.5); /* Deep bottom shadow */
+    
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s;
+    z-index: 10;
+}
+
+.liquid-metal-btn:hover {
+    transform: translateY(-2px) scale(1.02);
+}
+
+.liquid-metal-btn:active {
+    transform: translateY(1px) scale(0.98);
+}
+
+/* Internal 'Liquid' Layer */
+.liquid-metal-btn::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    
+    background-size: 50% 50%;
+    /* This creates the moving liquid texture effect */
+    filter: blur(8px) contrast(1.5);
+    z-index: -1;
+    
+    animation: liquid-swirl 8s linear infinite;
+}
+
+/* Glassy Shine Overlay */
+.liquid-metal-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(to bottom, 
+        rgba(255,255,255,0.3) 0%, 
+        rgba(255,255,255,0.05) 40%, 
+        transparent 100%);
+    border-radius: 9999px 9999px 200px 200px;
+    pointer-events: none;
+}
+
+@keyframes liquid-swirl {
+    0% { transform: rotate(0deg) translate(0, 0); }
+    100% { transform: rotate(360deg) translate(-20px, -20px); }
+}
+
+/* --- GOLD VARIANT --- */
+.liquid-gold {
+    background: #4A3700; /* Fallback */
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+.liquid-gold::before {
+    background-image: 
+        radial-gradient(circle at center, #FFD700 0%, transparent 60%),
+        radial-gradient(circle at 30% 30%, #FFF8DC 10%, transparent 50%),
+        conic-gradient(from 0deg, #4A3700, #DAA520, #FFD700, #DAA520, #4A3700);
+}
+.liquid-gold:hover {
+    box-shadow: 
+        0 0 25px rgba(218, 165, 32, 0.6),
+        inset 0 2px 2px rgba(255,255,255,0.4),
+        inset 0 -4px 10px rgba(0,0,0,0.5);
+}
+
+/* --- GREEN VARIANT (WhatsApp) --- */
+.liquid-green {
+    background: #052e16;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+.liquid-green::before {
+    background-image: 
+        radial-gradient(circle at center, #4ade80 0%, transparent 60%),
+        radial-gradient(circle at 70% 30%, #86efac 10%, transparent 50%),
+        conic-gradient(from 0deg, #064e3b, #166534, #22c55e, #166534, #064e3b);
+}
+.liquid-green:hover {
+     box-shadow: 
+        0 0 25px rgba(34, 197, 94, 0.6),
+        inset 0 2px 2px rgba(255,255,255,0.4),
+        inset 0 -4px 10px rgba(0,0,0,0.5);
+}
+
+/* --- NAVBAR VARIANT (Smaller) --- */
+.liquid-nav-btn {
+    height: 42px;
+    padding: 0 25px;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+}
+:root {
+    --color-bg-dark: #0a0a0a;
+    --color-bg-darker: #050505;
+    --color-text-white: #ffffff;
+    --color-text-muted: #a0a0a0;
+    --color-gold-light: #f9e5a0;
+    --color-gold: #d4af37;
+    --color-gold-dark: #aa8c2c;
+    --color-overlay: rgba(0, 0, 0, 0.6);
+    --color-whatsapp: #25D366;
+
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Outfit', sans-serif;
+
+    --transition-fast: 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    --transition-smooth: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+
+    --container-width: 1400px;
+    --padding-sides: 40px;
+    --nav-height: 110px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-white);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--font-heading);
+    font-weight: 400;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--padding-sides);
+    width: 100%;
+}
+
+/* --- Magnificent Navigation --- */
+.premium-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--nav-height);
+    z-index: 100;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.nav-container {
+    width: 100%;
+    max-width: var(--container-width);
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 0 var(--padding-sides);
+}
+
+/* Gold Lines Decor */
+.nav-container::before,
+.nav-container::after {
+    content: '';
+    position: absolute;
+    bottom: 30px;
+    /* Align with text baseline approx */
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-gold));
+    width: 35%;
+    opacity: 0.5;
+}
+
+.nav-container::before {
+    left: 0;
+    background: linear-gradient(90deg, transparent 0%, var(--color-gold) 100%);
+}
+
+.nav-container::after {
+    right: 0;
+    background: linear-gradient(90deg, var(--color-gold) 0%, transparent 100%);
+}
+
+/* Menu Items */
+.nav-menu {
+    display: flex;
+    gap: 50px;
+    flex: 1;
+}
+
+.nav-menu.left {
+    justify-content: flex-end;
+    padding-right: 120px;
+    /* Adjusted Space for logo */
+}
+
+.nav-menu.right {
+    justify-content: flex-start;
+    padding-left: 120px;
+    /* Adjusted Space for logo */
+}
+
+.nav-link {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--color-text-white);
+    position: relative;
+    transition: all 0.4s ease;
+    padding-bottom: 5px;
+}
+
+.nav-link:hover {
+    color: var(--color-gold);
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background-color: var(--color-gold);
+    transition: width 0.4s ease, left 0.4s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+.nav-btn.secondary {
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: 1px solid var(--color-gold);
+    padding: 10px 24px;
+    border-radius: 0;
+    transition: all 0.3s ease;
+}
+
+.nav-btn.secondary:hover {
+    background: var(--color-gold);
+    color: #000;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+/* Logo - The Centerpiece (REDUCED SIZE) */
+.logo-wrapper {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    z-index: 1000;
+    height: 220px;
+    /* Reduced from 300px */
+    width: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    pointer-events: auto;
+}
+
+.nav-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* Sophisticated Glow */
+    filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.4)) drop-shadow(0 0 20px rgba(212, 175, 55, 0.2));
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: scale(1.2) translateY(10px);
+}
+
+.logo-wrapper:hover .nav-logo {
+    transform: scale(1.3) translateY(10px);
+    filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.8)) drop-shadow(0 0 30px rgba(212, 175, 55, 0.4));
+}
+
+.logo-glow {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 120%;
+    /* Enhanced Radial Glow */
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, rgba(212, 175, 55, 0.1) 40%, transparent 70%);
+    z-index: -1;
+    pointer-events: none;
+    animation: gold-pulse-premium 4s infinite alternate;
+}
+
+@keyframes gold-pulse-premium {
+    0% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(0.9);
+        filter: blur(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.1);
+        filter: blur(30px);
+    }
+}
+
+/* Mobile Nav Hide */
+@media (max-width: 1100px) {
+    .nav-menu {
+        display: none;
+    }
+
+    .nav-container::before,
+    .nav-container::after {
+        display: none;
+    }
+
+    .logo-wrapper {
+        height: 120px;
+        width: 120px;
+    }
+
+    .nav-logo {
+        transform: scale(1);
+    }
+}
+
+
+/* --- Hero Section --- */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+#hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-overlay-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.6) 0%,
+            transparent 50%,
+            rgba(0, 0, 0, 0.9) 100%);
+    z-index: 2;
+}
+
+.video-overlay-particles,
+.video-overlay-scanlines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    padding-top: 150px;
+    text-align: center;
+}
+
+.hero-text-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.hero-headline {
+    font-size: clamp(3.5rem, 7vw, 6rem);
+    line-height: 1.1;
+    margin-bottom: 30px;
+    letter-spacing: -0.02em;
+}
+
+.hero-headline .line {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.text-goldish {
+    color: var(--color-gold);
+    background: linear-gradient(135deg, var(--color-gold-light) 0%, var(--color-gold) 50%, var(--color-gold-dark) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-subhead {
+    font-size: 1.2rem;
+    color: var(--color-text-white);
+    margin-bottom: 50px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+
+.hero-subhead .bullet {
+    color: var(--color-gold);
+    margin: 0 12px;
+}
+
+.hero-cta-group {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+}
+
+/* --- Crazy Classy Buttons --- */
+.btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 45px;
+    font-size: 15px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    /* Wider spacing for class */
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    z-index: 1;
+}
+
+/* Primary: Solid/Gold Shift */
+.btn-primary {
+    background: transparent;
+    color: var(--color-text-white);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-gold), var(--color-gold-light));
+    z-index: -1;
+    transition: width 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.btn-primary:hover {
+    color: #000;
+    border-color: var(--color-gold);
+    letter-spacing: 5px;
+    /* Expands on hover */
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+}
+
+.btn-primary:hover::before {
+    width: 100%;
+}
+
+/* Secondary: Glass/Border Glow */
+.btn-secondary {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    background: rgba(255, 255, 255, 0.05);
+    /* Slight glass */
+    backdrop-filter: blur(5px);
+}
+
+.btn-secondary::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transform: skewX(-20deg);
+    transition: 0.5s;
+    z-index: -1;
+}
+
+.btn-secondary:hover {
+    border-color: var(--color-whatsapp);
+    color: var(--color-whatsapp);
+    background: rgba(0, 0, 0, 0.8);
+    box-shadow: inset 0 0 20px rgba(37, 211, 102, 0.2);
+}
+
+.btn-secondary:hover::after {
+    left: 100%;
+    /* Shine passes through */
+    transition: 0.8s;
+}
+
+/* Icon Animation on hover */
+.btn-icon {
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+}
+
+.btn:hover .btn-icon {
+    transform: rotate(15deg) scale(1.1);
+}
+
+
+/* --- Loader --- */
+.loader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-bg-dark);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.8s ease-out, visibility 0.8s;
+}
+
+.loader-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-logo {
+    width: 120px;
+    animation: pulse-gold 2s infinite;
+    mix-blend-mode: screen;
+}
+
+/* --- Sections --- */
+.services-section,
+.staff-section,
+.faq-section {
+    padding: 120px 0;
+    position: relative;
+    background: var(--color-bg-darker);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 3.5rem;
+    color: var(--color-text-white);
+    margin-bottom: 80px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.service-card {
+    background: #0f0f0f;
+    padding: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.4s ease, border-color 0.4s ease;
+    text-align: center;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--color-gold);
+}
+
+.service-card h3 {
+    margin: 20px 0 15px;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.service-card p {
+    color: var(--color-text-muted);
+}
+
+.icon-wrapper {
+    color: var(--color-gold);
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+/* Page Header (Subpages) */
+.page-header {
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    position: relative;
+    overflow: hidden;
+    padding-top: 100px;
+}
+
+.page-title {
+    font-size: 5rem;
+    color: #fff;
+    z-index: 10;
+    position: relative;
+    font-family: var(--font-heading);
+}
+
+.page-content {
+    padding: 80px 0;
+    background: #0a0a0a;
+    min-height: 50vh;
+}
+
+/* Staff */
+.staff-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0;
+}
+
+.staff-video-wrapper {
+    height: 100vh;
+    position: relative;
+}
+
+.staff-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.staff-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px;
+}
+
+.staff-text {
+    font-size: 1.3rem;
+    margin-bottom: 40px;
+    color: #ccc;
+}
+
+/* Content Utilities */
+.text-block {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Footer */
+.simple-footer {
+    padding: 40px;
+    background: #000;
+    text-align: center;
+    color: #666;
+    border-top: 1px solid #111;
+}
+
+/* Common Utilities */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 1s ease;
+}
+
+.fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* FAQ styles included previously, preserving them simplified */
+.faq-section {
+    background: #050505;
+}
+
+.faq-grid {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.faq-item {
+    background: #111;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.faq-question {
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    font-family: var(--font-heading);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    padding: 0 30px;
+    background: #0e0e0e;
+    color: #aaa;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 300px;
+    padding-bottom: 30px;
+}
+
+.faq-icon {
+    color: var(--color-gold);
+    transition: transform 0.3s;
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(45deg);
+}
+
+/* Chat */
+.chat-widget {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 999;
+}
+
+.chat-toggle {
+    width: 60px;
+    height: 60px;
+    background: var(--color-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #000;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.chat-message {
+    position: absolute;
+    right: 70px;
+    top: 10px;
+    background: #fff;
+    padding: 10px 20px;
+    border-radius: 20px;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateX(10px);
+    transition: 0.3s;
+    color: #000;
+    pointer-events: none;
+}
+
+.chat-widget:hover .chat-message {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+@media (max-width: 900px) {
+    .staff-section {
+        grid-template-columns: 1fr;
+    }
+
+    .staff-video-wrapper {
+        height: 50vh;
+    }
+
+    .hero-headline {
+        font-size: 3rem;
+    }
+
+    .nav-container {
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+    }
+
+    .logo-wrapper {
+        position: relative;
+        left: auto;
+        transform: none;
+        top: auto;
+        height: 100px;
+        width: auto;
+        margin-bottom: 20px;
+    }
+
+    .nav-menu {
+        width: 100%;
+        justify-content: center;
+        padding: 0 !important;
+    }
+
+    .nav-menu.left,
+    .nav-menu.right {
+        order: 2;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+}/* --- Expertise Carousel --- */
+.carousel-section {
+    padding: 100px 0;
+    background: #000;
+    overflow: hidden;
+}
+
+.carousel-container {
+    padding: 20px 0;
+    overflow: visible; 
+}
+
+.carousel-track {
+    display: flex;
+    gap: 30px;
+    padding: 0 var(--padding-sides);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none; /* Hide scrollbar IE/Edge */
+    scrollbar-width: none; /* Hide scrollbar Firefox */
+}
+.carousel-track::-webkit-scrollbar { display: none; } /* Hide scrollbar Chrome/Safari */
+
+.carousel-item {
+    flex: 0 0 350px;
+    height: 500px;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    scroll-snap-align: center;
+    transition: transform 0.5s ease;
+    cursor: pointer;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+}
+
+.carousel-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 30px;
+    opacity: 1; 
+    transition: all 0.5s ease;
+}
+
+.carousel-title {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    font-family: var(--font-heading);
+    transform: translateY(20px);
+    transition: transform 0.5s ease;
+}
+
+.carousel-desc {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.5s ease 0.1s;
+}
+
+.carousel-item:hover img {
+    transform: scale(1.1);
+}
+
+.carousel-item:hover .carousel-title,
+.carousel-item:hover .carousel-desc {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.carousel-item:hover {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.carousel-nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.nav-arrow {
+    width: 50px;
+    height: 50px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.nav-arrow:hover {
+    border-color: var(--color-gold);
+    color: var(--color-gold);
+    background: rgba(255,255,255,0.05);
+}
+
+@media (max-width: 768px) {
+    .carousel-item { flex: 0 0 85vw; height: 400px; }
+}
+
+/* --- Liquid Buttons (Ported from Obsidian AI) --- */
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes rotate-glow {
+    0% { --angle: 0deg; }
+    100% { --angle: 360deg; }
+}
+
+/* Liquid Green (WhatsApp) */
+.liquid-btn-green {
+    display: inline-flex; /* Changed to inline-flex to fix layout issues */
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    border: none;
+    background: none;
+    position: relative;
+    padding: 2px; /* Border width */
+    text-decoration: none;
+    transition: all .18s ease-in-out;
+    cursor: pointer;
+}
+
+.liquid-btn-green::after,
+.liquid-btn-green::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    border-radius: 100px;
+    background-image: conic-gradient(from var(--angle) at 50% 50%,
+            transparent 0%, transparent 33%,
+            #58DD93 50%,
+            transparent 66%, transparent 100%);
+    animation: rotate-glow 2s infinite linear;
+    z-index: 0;
+}
+
+.liquid-btn-green::before {
+    filter: blur(20px);
+    opacity: 0.5;
+}
+
+.liquid-btn-inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+    padding: 16px 32px;
+    border-radius: 100px;
+    background: rgba(0, 0, 0, 0.9);
+    color: #58DD93;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    z-index: 1;
+    transition: all .3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.liquid-btn-green:hover .liquid-btn-inner {
+    background: rgba(88, 221, 147, 0.1);
+    color: #fff;
+    text-shadow: 0 0 10px rgba(88, 221, 147, 0.5);
+    box-shadow: inset 0 0 20px rgba(88, 221, 147, 0.2);
+}
+
+/* Liquid Gold (Contact) */
+.liquid-btn-gold {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    border: none;
+    background: none;
+    position: relative;
+    padding: 2px;
+    text-decoration: none;
+    transition: all .18s ease-in-out;
+    cursor: pointer;
+}
+
+.liquid-btn-gold::after,
+.liquid-btn-gold::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    border-radius: 100px;
+    background-image: conic-gradient(from var(--angle) at 50% 50%,
+            transparent 0%, transparent 33%,
+            #d4af37 50%,
+            transparent 66%, transparent 100%);
+    animation: rotate-glow 2s infinite linear;
+    z-index: 0;
+}
+
+.liquid-btn-gold::before {
+    filter: blur(20px);
+    opacity: 0.5;
+}
+
+.liquid-btn-gold .liquid-btn-inner {
+    color: #d4af37;
+    background: rgba(0, 0, 0, 0.95);
+}
+
+.liquid-btn-gold:hover .liquid-btn-inner {
+    background: rgba(212, 175, 55, 0.15);
+    color: #fff;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+    box-shadow: inset 0 0 20px rgba(212, 175, 55, 0.2);
+}
+
+/* --- Floating WhatsApp --- */
+.floating-whatsapp {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9999;
+}
+
+.liquid-fab-green {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex; /* Changed from inline-flex */
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 2px;
+    background: none;
+    cursor: pointer;
+}
+
+.liquid-fab-green::after,
+.liquid-fab-green::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    border-radius: 50%;
+    background-image: conic-gradient(from var(--angle) at 50% 50%,
+            transparent 0%, transparent 33%,
+            #25D366 50%,
+            transparent 66%, transparent 100%);
+    animation: rotate-glow 2s infinite linear;
+}
+
+.liquid-fab-green::before {
+    filter: blur(15px);
+    opacity: 0.6;
+}
+
+.liquid-fab-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    color: #25D366;
+    transition: all 0.3s ease;
+}
+
+.liquid-fab-green:hover .liquid-fab-inner {
+    background: #25D366;
+    color: white;
+    box-shadow: 0 0 20px rgba(37, 211, 102, 0.4);
+}
+
+/* --- Contact Upload Section --- */
+.contact-upload-section {
+    padding: 100px 0;
+    background: #080808;
+    position: relative;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.upload-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    max-width: 1000px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.upload-card {
+    background: #111;
+    border: 1px dashed rgba(212, 175, 55, 0.3);
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.upload-card:hover {
+    border-color: var(--color-gold);
+    background: rgba(212, 175, 55, 0.05);
+}
+
+.upload-icon {
+    font-size: 3rem;
+    color: var(--color-gold);
+    margin-bottom: 20px;
+}
+
+.file-input {
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.contact-form-wrapper {
+    background: #0f0f0f;
+    padding: 40px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 15px;
+    background: #050505;
+    border: 1px solid #333;
+    border-radius: 6px;
+    color: #fff;
+    font-family: var(--font-body);
+}
+
+.form-input:focus {
+    border-color: var(--color-gold);
+    outline: none;
+}
+
+@media (max-width: 768px) {
+    .upload-grid { grid-template-columns: 1fr; }
+}
+/* --- Liquid Gold Button (Navbar) --- */
+/* A contained version of liquid gold for the header button */
+.liquid-btn-gold-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0; /* Sharp for nav */
+    border: none;
+    background: none;
+    position: relative;
+    padding: 1px;
+    text-decoration: none;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.liquid-btn-gold-nav::after,
+.liquid-btn-gold-nav::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: conic-gradient(from var(--angle) at 50% 50%,
+            transparent 0%, transparent 33%,
+            #d4af37 50%,
+            transparent 66%, transparent 100%);
+    animation: rotate-glow 3s infinite linear;
+    z-index: 0;
+}
+
+.liquid-btn-gold-nav .liquid-btn-inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 10px 24px;
+    background: #000; /* Solid back backing */
+    color: #d4af37;
+    z-index: 1;
+    transition: all .3s ease;
+}
+
+.liquid-btn-gold-nav:hover .liquid-btn-inner {
+    background: var(--color-gold);
+    color: #000;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+/* --- Contact Form Glow Input --- */
+.contact-form-wrapper {
+    position: relative;
+    z-index: 10;
+}
+
+.form-input {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    transition: all 0.3s;
+}
+
+.form-input:focus {
+    border-color: var(--color-gold);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+    background: rgba(0,0,0,0.8);
+}
+/* --- Glow-on-focus input (Contact Form) --- */
+/* Overrides to ensure glow is strong */
+.contact-form-wrapper .form-input:focus {
+    border-color: var(--color-gold);
+    box-shadow: 0 0 15px 2px rgba(212, 175, 55, 0.5);
+    background: rgba(0,0,0,0.9);
+}
+
+/* --- REAL Liquid Buttons (Filled Gradient, Not Border) --- */
+@keyframes liquid-flow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Base Liquid Button */
+.filled-liquid-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.1);
+    background-size: 200% 200%;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.2); /* Inner depth */
+    overflow: hidden;
+    cursor: pointer;
+    animation: liquid-flow 10s ease infinite; /* Very slow, almost static flow */
+}
+
+.filled-liquid-btn:hover {
+    transform: scale(1.05);
+}
+
+.filled-liquid-btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 50%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.1), transparent);
+    pointer-events: none;
+}
+
+/* Liquid Gold (Website/Collection) */
+.liquid-btn-gold {
+    /* Deep Gold to Bright Gold to Brown */
+    background-image: linear-gradient(45deg, #4A3700, #B8860B, #FFD700, #B8860B, #4A3700);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3), inset 0 0 10px rgba(0,0,0,0.3);
+} 
+
+.liquid-btn-gold:hover {
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.6), inset 0 0 10px rgba(0,0,0,0.3);
+}
+
+
+/* Liquid Green (WhatsApp) */
+.liquid-btn-green {
+    /* Dark Green to Bright Green */
+    background-image: linear-gradient(45deg, #052e16, #15803d, #25D366, #15803d, #052e16);
+    box-shadow: 0 0 15px rgba(37, 211, 102, 0.3), inset 0 0 10px rgba(0,0,0,0.3);
+}
+
+.liquid-btn-green:hover {
+    box-shadow: 0 0 25px rgba(37, 211, 102, 0.6), inset 0 0 10px rgba(0,0,0,0.3);
+}
+
+/* Nav Link Override */
+.liquid-btn-gold-nav {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 24px;
+    border-radius: 999px; /* Pill shape like Obsidian */
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    color: #fff;
+    background-image: linear-gradient(45deg, #4A3700, #B8860B, #FFD700, #B8860B, #4A3700);
+    background-size: 200% 200%;
+    animation: liquid-flow 10s ease infinite;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+    transition: all 0.3s;
+}
+
+.liquid-btn-gold-nav:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    color: #fff;
+}
+
+.liquid-btn-inner {
+    /* Resetting the previous inner span styles */
+    background: transparent !important; 
+    padding: 0 !important;
+    width: auto !important;
+    height: auto !important;
+}
+
+/* --- Contact Form Static Glow --- */
+.contact-form-wrapper {
+    /* Remove any pulsing or flashing */
+    animation: none !important;
+}
+
+.form-input:focus {
+    /* Just a nice solid glow, no flashing */
+    border-color: var(--color-gold);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); 
+    background: rgba(0,0,0,0.8);
+    outline: none;
+}
+
+/* --- Floating Button Fix --- */
+.liquid-fab-green {
+    /* Applying the filled style to FAB as well */
+    background-image: linear-gradient(45deg, #052e16, #15803d, #25D366, #15803d, #052e16);
+    background-size: 200% 200%;
+    animation: liquid-flow 10s ease infinite; /* Slow flow */
+    border: none;
+    box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
+}
+/* Hide the previous pseudo-border elements */
+.liquid-btn-gold::before, .liquid-btn-gold::after,
+.liquid-btn-green::before, .liquid-btn-green::after,
+.liquid-btn-gold-nav::before, .liquid-btn-gold-nav::after,
+.liquid-fab-green::before, .liquid-fab-green::after {
+    display: none !important;
+}
+/* --- Button Text Clarity Fix --- */
+.liquid-metal-btn {
+    font-weight: 800 !important; /* Extra Bold */
+    font-size: 15px !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.9) !important; /* Strong drop shadow for contrast */
+    letter-spacing: 1.5px !important;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    color: #ffffff !important;
+}
+
+/* Ensure Nav button text is also clear but smaller */
+.liquid-nav-btn {
+    font-size: 13px !important;
+    font-weight: 800 !important;
+}
