@@ -11,6 +11,8 @@
     text-decoration: none;
     cursor: pointer;
     overflow: hidden;
+    gap: 10px;
+    /* Even spacing between items */
 
     /* Typography */
     color: white;
@@ -2558,4 +2560,10 @@ body.bg-gold .layer-gold {
         height: 300px;
         width: 100%;
     }
+}
+
+.btn-spacer {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
 }
