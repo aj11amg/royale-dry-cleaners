@@ -5,6 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lux Dry Cleaners | Professional Garment Care</title>
+
+    <!-- SEO & Meta Tags -->
+    <meta name="description"
+        content="Premier dry cleaning and garment care in London. Specializing in luxury brands, bespoke alterations, wedding dress preservation, and leather restoration.">
+    <meta name="keywords"
+        content="Dry Cleaners London, Luxury Dry Cleaning, Alterations, Wedding Dress Cleaning, Leather Repair, Shoe Restoration, Same Day Dry Cleaning">
+    <meta name="author" content="Lux Dry Cleaners">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://luxdrycleaners.com/">
+    <meta property="og:title" content="Lux Dry Cleaners | The Gold Standard of Garment Care">
+    <meta property="og:description"
+        content="Experience London's finest eco-friendly dry cleaning and restoration service.">
+    <meta property="og:image" content="assets/images/lux-logo.png">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,7 +34,250 @@
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
         rel="stylesheet">
     <!-- Styles -->
-    <link rel="stylesheet" href="css/style.v12.css?v=1770149958">
+    <link rel="stylesheet" href="css/style.v12.css?v=1770180001">
+    <style>
+        /* --- HOMEPAGE HERO: CINEMATIC 3D GOLD RISE --- */
+        .hero-headline .reveal-text {
+            display: inline-block;
+            position: relative;
+
+            /* Initial State: Invisible, Lying Flat, Hollow */
+            opacity: 0;
+            transform: perspective(1000px) rotateX(90deg) translateY(50px);
+            transform-origin: bottom center;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+
+            /* Fill Gradient (White/Gold) */
+            background-clip: text;
+            -webkit-background-clip: text;
+            background-size: 100% 200%;
+            background-position: 0% 0%;
+            /* Start empty */
+
+            will-change: transform, opacity, background-position;
+        }
+
+        /* 1. PROFESSIONAL / GARMENT CARE (White Clean Rise) */
+        .hero-headline .reveal-text:not(.text-goldish) {
+            background-image: linear-gradient(to top, #ffffff 50%, transparent 50.1%);
+            animation: cinematic-rise 3s cubic-bezier(0.2, 0.8, 0.2, 1) forwards,
+                fill-up 3s ease-out forwards;
+        }
+
+        /* 2. DONE PROPERLY (Gold Luxury Rise + SUPERNOVA GLOW) */
+        .hero-headline .reveal-text.text-goldish {
+            -webkit-text-stroke: 1px rgba(212, 175, 55, 0.5);
+            /* Gold Gradient */
+            background-image: linear-gradient(to top, #d4af37 20%, #fcf6ba 50%, #aa771c 80%, transparent 80.1%);
+
+            /* Initial Shadow State */
+            filter: drop-shadow(0 0 0px rgba(212, 175, 55, 0));
+
+            /* Sequence: Rise -> Fill -> IGNITE */
+            animation: cinematic-rise 4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.5s,
+                fill-up-gold 4s ease-out forwards 0.5s,
+                supernova-pulse 3s ease-in-out infinite 4.0s;
+        }
+
+        /* Stagger Lines */
+        .hero-headline .reveal-text:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .hero-headline .reveal-text.text-goldish {
+            animation-delay: 0.5s;
+            /* Explicitly set delay for robustness */
+        }
+
+        .hero-headline .reveal-text:nth-child(2) {
+            animation-delay: 0.8s;
+        }
+
+        /* --- Keyframes --- */
+
+        /* 1. The Rise (3D Rotation) */
+        @keyframes cinematic-rise {
+            0% {
+                opacity: 0;
+                transform: perspective(1000px) rotateX(90deg) translateY(50px);
+                filter: blur(10px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: perspective(1000px) rotateX(0deg) translateY(0);
+                filter: blur(0);
+            }
+        }
+
+        /* 2. The Fill (White) */
+        @keyframes fill-up {
+            0% {
+                background-position: 0% 0%;
+            }
+
+            100% {
+                background-position: 0% 100%;
+                -webkit-text-stroke: 0px transparent;
+            }
+        }
+
+        /* 3. The Fill (Gold) */
+        @keyframes fill-up-gold {
+            0% {
+                background-position: 0% 0%;
+            }
+
+            100% {
+                background-position: 0% 100%;
+                -webkit-text-stroke: 0px transparent;
+            }
+        }
+
+        /* 4. SUPERNOVA GLOW (Intense Backlight) */
+        @keyframes supernova-pulse {
+
+            0%,
+            100% {
+                /* Low state: warm glow */
+                filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.8)) drop-shadow(0 0 20px rgba(212, 175, 55, 0.4));
+            }
+
+            50% {
+                /* High state: RADIOACTIVE GOLD */
+                filter: drop-shadow(0 0 15px rgba(255, 223, 0, 1)) drop-shadow(0 0 40px rgba(212, 175, 55, 0.8)) drop-shadow(0 0 80px rgba(212, 175, 55, 0.5));
+            }
+        }
+
+        /* --- SERVICES SECTION ANIMATIONS (Fixed & Forced) --- */
+
+        /* 1. Service Card Glow */
+        .service-card {
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: #d4af37;
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.2),
+                0 0 20px rgba(212, 175, 55, 0.1) inset;
+            /* Inner & Outer Glow */
+            background: rgba(20, 20, 20, 0.8);
+            /* Slightly lighter dark */
+        }
+
+        /* 2. Icon Animation (Continuous Float) */
+        .service-card .icon-wrapper svg {
+            animation: icon-float 3s ease-in-out infinite;
+            transition: transform 0.4s ease;
+        }
+
+        /* Icon Pop on Hover */
+        .service-card:hover .icon-wrapper svg {
+            transform: scale(1.2) rotate(5deg);
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.6));
+            animation-play-state: paused;
+        }
+
+        /* 3. Card Border Line Reveal */
+        .service-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #d4af37;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        @keyframes icon-float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* --- SERVICES SECTION ANIMATIONS (AGGRESSIVE & FORCED V2) --- */
+
+        /* 1. Service Card Glow */
+        .service-card {
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+            background: rgba(10, 10, 10, 0.8) !important;
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px) scale(1.02) !important;
+            /* Visible Jump */
+            border: 1px solid #ffd700 !important;
+            /* Bright Gold Border */
+            box-shadow: 0 15px 50px rgba(255, 215, 0, 0.4),
+                0 0 30px rgba(255, 215, 0, 0.2) inset !important;
+            /* GLOW */
+            background: rgba(30, 30, 30, 1) !important;
+            z-index: 100;
+        }
+
+        /* 2. Icon Animation */
+        .service-card .icon-wrapper svg {
+            animation: icon-float 2s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        .service-card:hover .icon-wrapper svg {
+            transform: scale(1.4) rotate(10deg) !important;
+            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8));
+            stroke: #ffd700;
+        }
+
+        /* 3. Gold Line Reveal */
+        .service-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100% !important;
+            height: 4px !important;
+            background: #ffd700 !important;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+            display: block !important;
+        }
+
+        .service-card:hover::after {
+            transform: scaleX(1) !important;
+        }
+
+        @keyframes icon-float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -97,8 +362,11 @@
                     <span class="line reveal-text text-goldish">Done Properly.</span>
                 </h1>
                 <p class="hero-subhead fade-in-up">
-                    Specialist Dry Cleaning <span class="bullet">•</span> Professional Ironing <span
-                        class="bullet">•</span> Alterations & Repairs
+                    <span class="hero-service">Specialist Dry Cleaning</span>
+                    <span class="bullet">•</span>
+                    <span class="hero-service">Professional Ironing</span>
+                    <span class="bullet">•</span>
+                    <span class="hero-service">Alterations & Repairs</span>
                 </p>
 
                 <div class="hero-cta-group fade-in-up delay-200">
@@ -431,6 +699,31 @@
     <!-- Premium Footer -->
     <footer class="lux-footer-premium">
         <div class="container">
+            <div class="footer-address" style="text-align: center; margin-bottom: 40px;">
+                <h4
+                    style="color: #d4af37; margin-bottom: 20px; font-family: var(--font-heading); font-weight: 400; letter-spacing: 1px;">
+                    Visit Our Boutique</h4>
+
+                <!-- Store Image -->
+                <div class="store-image-wrapper"
+                    style="margin-bottom: 25px; position: relative; display: inline-block;">
+                    <img src="assets/images/store-boutique.jpg" alt="Lux Dry Cleaners Boutique Interior"
+                        style="max-width: 100%; width: 250px; border-radius: 4px; border: 1px solid rgba(212, 175, 55, 0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                    <div
+                        style="position: absolute; inset: 0; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; pointer-events: none;">
+                    </div>
+                </div>
+
+                <p style="color: #ccc; font-size: 1.1rem; line-height: 1.6;">
+                    29 Packhorse Rd, Gerrards Cross<br>
+                    <span style="color: #888; font-size: 0.95rem;">SL9 7QA</span>
+                </p>
+                <a href="https://maps.google.com/?q=29+Packhorse+Rd+Gerrards+Cross+SL9+7QA" target="_blank"
+                    style="color: #d4af37; font-size: 0.9rem; text-decoration: none; border-bottom: 1px solid rgba(212, 175, 55, 0.3); padding-bottom: 2px; margin-top: 10px; display: inline-block; transition: all 0.3s ease;">
+                    Get Directions
+                </a>
+            </div>
+
             <div class="social-orb-container">
                 <!-- Instagram -->
                 <a href="#" class="social-orb" aria-label="Instagram">
@@ -478,6 +771,26 @@
     </div>
 
     <script src="js/main.js"></script>
+    <script>
+        // --- SAFETY FALLBACK FOR ANIMATIONS ---
+        // If the fancy CSS animations fail to load or run, this ensures the text is visible.
+        document.addEventListener("DOMContentLoaded", function () {
+            setTimeout(function () {
+                const textElements = document.querySelectorAll('.hero-headline .reveal-text');
+                textElements.forEach(el => {
+                    // Check if opacity is still near 0 (meaning animation didn't run)
+                    const style = window.getComputedStyle(el);
+                    if (style.opacity < 0.1) {
+                        // Force visibility
+                        el.style.opacity = '1';
+                        el.style.color = el.classList.contains('text-goldish') ? '#d4af37' : '#ffffff';
+                        el.style.webkitTextStroke = '0px';
+                        console.log('Animation fallback triggered for', el);
+                    }
+                });
+            }, 8000); aitimation is now very slow, so wait longer)
+
+    </script>
 </body>
 
 </html>

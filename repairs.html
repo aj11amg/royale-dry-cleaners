@@ -12,7 +12,114 @@
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
         rel="stylesheet">
     <!-- Styles -->
-    <link rel="stylesheet" href="css/style.v12.css?v=1770149958">
+    <link rel="stylesheet" href="css/style.v12.css?v=1770180001">
+    <style>
+        /* --- LIQUID GOLD KINETIC TYPOGRAPHY --- */
+        #repair-text {
+            position: relative;
+            display: inline-block;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(212, 175, 55, 0.4);
+            /* Faint gold outline start */
+            background: linear-gradient(to right, #8a6e2f, #d4af37, #fff, #d4af37, #8a6e2f);
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            /* Start "empty" by positioning background out of view or using a mask */
+            /* Actually, let's use a clip-path reveal for the "filling" effect */
+            background-position: 200% center;
+            transition: all 0.5s ease;
+            animation: liquid-fill 2.5s cubic-bezier(0.23, 1, 0.32, 1) forwards 0.5s,
+                shimmer 3s linear infinite 3s;
+            /* Shimmer starts after fill */
+
+            /* 3D Initial State */
+            transform: perspective(500px) rotateX(40deg) translateY(20px);
+            opacity: 0;
+            filter: blur(5px);
+
+            /* Fix for cutting off ascenders/descenders */
+            padding: 10px 0;
+            margin: -10px 0;
+        }
+
+        /* The Fill _and_ Reveal Animation */
+        @keyframes liquid-fill {
+            0% {
+                background-position: 200% center;
+                /* Empty/Dark */
+                opacity: 0;
+                transform: perspective(500px) rotateX(40deg) translateY(20px) scale(0.9);
+                filter: blur(5px);
+                -webkit-text-stroke: 1px rgba(212, 175, 55, 0.3);
+            }
+
+            50% {
+                opacity: 1;
+                filter: blur(0);
+                -webkit-text-stroke: 1px rgba(212, 175, 55, 0.8);
+            }
+
+            100% {
+                background-position: 0% center;
+                /* Full Gold Gradient */
+                opacity: 1;
+                transform: perspective(500px) rotateX(0deg) translateY(0) scale(1);
+                filter: blur(0);
+                -webkit-text-stroke: 0px transparent;
+                /* Filled, no stroke needed */
+                color: transparent;
+                /* Keep transparent so background shows */
+            }
+        }
+
+        /* Continuous Premium Shimmer */
+        @keyframes shimmer {
+            0% {
+                background-position: 0% center;
+            }
+
+            100% {
+                background-position: 200% center;
+            }
+        }
+
+        /* Needle is now a "finishing touch" lens flare */
+        #repair-text::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: 2px;
+            background: #fff;
+            box-shadow: 0 0 20px 5px #fff, 0 0 40px 10px var(--color-gold);
+            opacity: 0;
+            transform: rotate(15deg);
+            animation: flare-pass 1.5s ease-in-out forwards 1s;
+            pointer-events: none;
+        }
+
+        @keyframes flare-pass {
+            0% {
+                right: 100%;
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                right: -20%;
+                opacity: 0;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -70,7 +177,8 @@
         style="height:80vh; background-image: url('assets/images/repair_seam_stitch.png'); background-size:cover; background-position:center;">
         <div class="video-overlay-gradient"></div>
         <div class="container" style="position:relative; z-index:10; text-align:center;">
-            <h1 class="page-title fade-in-up">Masterful <span class="text-goldish">Repairs</span></h1>
+            <h1 class="page-title fade-in-up" id="repair-hero-title">Masterful <span class="text-goldish"
+                    id="repair-text">Repairs</span></h1>
             <p class="hero-subhead fade-in-up" style="margin-top:20px; animation-delay:0.2s;">Invisible mending.
                 Seamless restoration.</p>
         </div>
