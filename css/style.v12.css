@@ -1923,6 +1923,15 @@ a {
         align-items: center;
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        /* Added for vertical centering confidence */
+    }
+
+    .hero-text-wrapper {
+        width: 100%;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .hero-headline {
@@ -1931,6 +1940,9 @@ a {
         margin-bottom: 25px;
         text-align: center;
         /* Explicit center */
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
     }
 
     .hero-subhead {
