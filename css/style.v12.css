@@ -1928,6 +1928,18 @@ a {
         letter-spacing: 1px;
     }
 
+    /* Hide bullets on mobile for cleaner stacking */
+    .hero-subhead .bullet {
+        display: none;
+    }
+
+    /* Stack the subhead words nicely */
+    .hero-subhead {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
     .hero-cta-group {
         flex-direction: column;
         width: 100%;
@@ -1972,7 +1984,14 @@ a {
 
     .staff-content {
         padding: 40px 20px;
-        text-align: center;
+        text-align: center !important;
+        /* Force center */
+    }
+
+    .staff-content .section-title {
+        text-align: center !important;
+        /* Force center title */
+        margin-bottom: 20px;
     }
 
     /* Carousel */
