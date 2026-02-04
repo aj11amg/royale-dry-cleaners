@@ -1,0 +1,117 @@
+
+/* --- SCROLL-TRIGGERED BACKGROUND ANIMATION --- */
+/* We use a fixed background container with multiple overlapping layers */
+.dynamic-bg-container {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100vh;
+    z-index: -2;
+    background: #000;
+}
+
+.bg-layer {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
+    background-size: cover;
+    background-position: center;
+}
+
+/* Layer 1: Deep Green (Eco) */
+.bg-layer.layer-green {
+    background: radial-gradient(circle at 20% 50%, #052e16 0%, #000 70%);
+}
+
+/* Layer 2: Deep Blue (Stain) */
+.bg-layer.layer-blue {
+    background: radial-gradient(circle at 80% 50%, #0c0a3e 0%, #000 70%);
+}
+
+/* Layer 3: Deep Gold (Hand Finish/Restoration) */
+.bg-layer.layer-gold {
+    background: radial-gradient(circle at 50% 50%, #2e2000 0%, #000 70%);
+}
+
+/* Interaction States via JS active classes */
+body.bg-green .layer-green { opacity: 1; }
+body.bg-blue .layer-blue { opacity: 1; }
+body.bg-gold .layer-gold { opacity: 1; }
+
+
+/* --- FABRIC CARE CARDS (Interactive) --- */
+.fabric-care-section {
+    position: relative;
+    padding: 100px 0;
+}
+
+.process-card {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    margin-bottom: 150px;
+    position: relative;
+}
+
+.process-card.reverse {
+    flex-direction: row-reverse;
+}
+
+.process-image-box {
+    flex: 1;
+    height: 500px;
+    border-radius: 30px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.process-img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.process-card:hover .process-img {
+    transform: scale(1.05);
+}
+
+.process-content {
+    flex: 1;
+}
+
+.process-title {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    background: linear-gradient(90deg, #fff, #999);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.process-desc {
+    font-size: 1.1rem;
+    color: #aaa;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+/* Animation triggers */
+.fade-up-trigger {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out;
+}
+
+.fade-up-trigger.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 900px) {
+    .process-card, .process-card.reverse {
+        flex-direction: column;
+        gap: 40px;
+    }
+    .process-image-box { height: 300px; width: 100%; }
+}

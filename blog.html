@@ -12,7 +12,7 @@
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
         rel="stylesheet">
     <!-- Styles -->
-    <link rel="stylesheet" href="css/style.vfinal.css?v=1770092655">
+    <link rel="stylesheet" href="css/style.v12.css?v=1770149956">
 </head>
 
 <body>
@@ -31,7 +31,7 @@
             <div class="nav-menu left">
                 <a href="dry-cleaning.html" class="nav-link">Dry Cleaning</a>
                 <a href="alterations.html" class="nav-link">Alterations</a>
-                <a href="restoration.html" class="nav-link">Restoration</a>
+                <a href="repairs.html" class="nav-link">Repairs</a>
             </div>
 
             <!-- Center Logo -->
@@ -42,88 +42,155 @@
 
             <!-- Right Menu -->
             <div class="nav-menu right">
+                <a href="restoration.html" class="nav-link">Restoration</a>
                 <a href="pricing.html" class="nav-link">Pricing</a>
-                <a href="blog.html" class="nav-link" style="color: var(--color-gold);">Blog</a>
-                <a href="index.html#contact" class="nav-btn secondary">Contact</a>
+                <a href="index.html#contact" class="nav-link">
+                    Contact
+                </a>
+            </div>
+
+            <!-- Mobile Hamburger -->
+            <div class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
     </nav>
+
+    <!-- Mobile Nav Overlay -->
+    <div class="mobile-nav-overlay" id="mobileNav">
+        <div class="mobile-nav-links">
+            <a href="index.html" class="mobile-nav-link">Home</a>
+            <a href="dry-cleaning.html" class="mobile-nav-link">Services</a>
+            <a href="pricing.html" class="mobile-nav-link">Pricing</a>
+            <a href="index.html#contact" class="mobile-nav-link">Contact</a>
+        </div>
+    </div>
 
     <!-- Page Header -->
     <header class="page-header">
         <div class="video-overlay-gradient"></div>
         <div class="video-overlay-particles"></div>
-        <h1 class="page-title fade-in-up">Latest Insights</h1>
+        <h1 class="page-title fade-in-up">The Journal</h1>
     </header>
 
     <!-- Content -->
     <section class="page-content">
         <div class="container">
-            <div class="blog-grid fade-on-scroll">
+            <div class="blog-grid-premium fade-on-scroll">
 
-                <!-- Blog Post 1 -->
-                <article class="blog-card">
-                    <span class="blog-date">Oct 12, 2024</span>
-                    <h2 class="blog-title">How to Care for Cashmere</h2>
-                    <p style="color: var(--color-text-muted); margin-bottom: 20px;">
-                        Cashmere is delicate and luxurious. Learn the proper way to store and clean your cashmere
-                        garments to prevent pilling and moth damage.
-                    </p>
-                    <a href="#" class="nav-link" style="font-size: 12px;">Read More</a>
+                <!-- Article 1: Fabric Science -->
+                <article class="article-card">
+                    <div class="article-image-wrapper">
+                        <img src="assets/images/blog-stain.png" alt="Stain Removal Science" class="article-image">
+                        <div class="article-overlay"></div>
+                    </div>
+                    <div class="article-content">
+                        <span class="article-tag">Expertise</span>
+                        <div>
+                            <span class="article-date">October 12, 2024</span>
+                            <h2 class="article-title">The Science of Invisible Stains</h2>
+                            <p class="article-excerpt">
+                                Some stains don't appear until days later. Discover the chemistry behind 'invisible'
+                                spills and how our enzyme-based cleaning technology targets them at a molecular level.
+                            </p>
+                        </div>
+                        <a href="article-stain.html" class="read-more-btn">Read Article</a>
+                    </div>
                 </article>
 
-                <!-- Blog Post 2 -->
-                <article class="blog-card">
-                    <span class="blog-date">Sep 28, 2024</span>
-                    <h2 class="blog-title">The Benefits of Eco-Friendly Cleaning</h2>
-                    <p style="color: var(--color-text-muted); margin-bottom: 20px;">
-                        Why we switched to non-toxic solvents and how it benefits both your skin and the environment.
-                    </p>
-                    <a href="#" class="nav-link" style="font-size: 12px;">Read More</a>
+                <!-- Article 2: Wardrobe Care -->
+                <article class="article-card">
+                    <div class="article-image-wrapper">
+                        <img src="assets/images/blog-wardrobe.png" alt="Luxury Wardrobe" class="article-image">
+                        <div class="article-overlay"></div>
+                    </div>
+                    <div class="article-content">
+                        <span class="article-tag">Lifestyle</span>
+                        <div>
+                            <span class="article-date">September 28, 2024</span>
+                            <h2 class="article-title">Curating a Timeless Wardrobe</h2>
+                            <p class="article-excerpt">
+                                Investing in quality over quantity. A guide to building a bespoke wardrobe that
+                                transcends seasons, and the maintenance routine required to keep it pristine forever.
+                            </p>
+                        </div>
+                        <a href="article-wardrobe.html" class="read-more-btn">Read Article</a>
+                    </div>
                 </article>
 
-                <!-- Blog Post 3 -->
-                <article class="blog-card">
-                    <span class="blog-date">Sep 15, 2024</span>
-                    <h2 class="blog-title">5 Signs Your Suit Needs Tailoring</h2>
-                    <p style="color: var(--color-text-muted); margin-bottom: 20px;">
-                        Does your jacket bunch up? Are your trousers too long? Here is how to tell if you need a visit
-                        to our alteration specialists.
-                    </p>
-                    <a href="#" class="nav-link" style="font-size: 12px;">Read More</a>
-                </article>
-
-                <!-- Blog Post 4 -->
-                <article class="blog-card">
-                    <span class="blog-date">Aug 30, 2024</span>
-                    <h2 class="blog-title">Wedding Dress Preservation Guide</h2>
-                    <p style="color: var(--color-text-muted); margin-bottom: 20px;">
-                        After the big day, ensure your gown remains timeless. A step-by-step guide to our preservation
-                        process.
-                    </p>
-                    <a href="#" class="nav-link" style="font-size: 12px;">Read More</a>
+                <!-- Article 3: Eco Luxury -->
+                <article class="article-card">
+                    <div class="article-image-wrapper">
+                        <img src="assets/images/blog-eco.png" alt="Eco Friendly Cleaning" class="article-image">
+                        <div class="article-overlay"></div>
+                    </div>
+                    <div class="article-content">
+                        <span class="article-tag">Sustainability</span>
+                        <div>
+                            <span class="article-date">September 15, 2024</span>
+                            <h2 class="article-title">Sustainable Luxury: The Green Clean</h2>
+                            <p class="article-excerpt">
+                                Why we ditched Perchloroethylene for non-toxic, organic solvents. It’s not just better
+                                for the planet—it’s actually gentler on your most delicate silks and wools.
+                            </p>
+                        </div>
+                        <a href="article-eco.html" class="read-more-btn">Read Article</a>
+                    </div>
                 </article>
 
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="simple-footer">
-        <p>&copy; 2024 Lux Dry Cleaners. Excellence in every fiber.</p>
+    <!-- Premium Footer -->
+    <footer class="lux-footer-premium">
+        <div class="container">
+            <div class="social-orb-container">
+                <!-- Instagram -->
+                <a href="#" class="social-orb" aria-label="Instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                </a>
+                <!-- Facebook -->
+                <a href="#" class="social-orb" aria-label="Facebook">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                    </svg>
+                </a>
+                <!-- WhatsApp -->
+                <a href="#" class="social-orb" aria-label="WhatsApp">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                        </path>
+                    </svg>
+                </a>
+            </div>
+            <p class="footer-copy" style="color:#555; text-transform:uppercase; letter-spacing:2px; font-size:0.8rem;">
+                &copy; 2024 Lux Dry Cleaners. Excellence in every fiber.</p>
+        </div>
     </footer>
 
-    <!-- Chat Widget -->
-    <div class="chat-widget fade-in-up delay-500">
-        <div class="chat-toggle">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-            </svg>
-        </div>
-        <div class="chat-message">
-            Hi! How can we help? 👋
-        </div>
+    <!-- Floating WhatsApp -->
+    <div class="floating-whatsapp">
+        <a href="https://wa.me/447754457777" class="liquid-fab-green">
+            <div class="liquid-fab-inner">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                    </path>
+                </svg>
+            </div>
+        </a>
     </div>
 
     <script src="js/main.js"></script>

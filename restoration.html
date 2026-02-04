@@ -5,116 +5,138 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restoration | Lux Dry Cleaners</title>
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
         rel="stylesheet">
-    <!-- Styles -->
-    <link rel="stylesheet" href="css/style.vfinal.css?v=1770092655">
+    <link rel="stylesheet" href="css/style.v12.css?v=1770149956">
 </head>
 
 <body>
 
     <!-- Loading Overlay -->
     <div class="loader-overlay" id="loader">
-        <div class="loader-logo-container">
-            <img src="assets/images/lux-logo.png" alt="Lux Dry Cleaners" class="loader-logo">
-        </div>
+        <div class="loader-logo-container"><img src="assets/images/lux-logo.png" alt="Lux" class="loader-logo"></div>
     </div>
 
     <!-- Navigation -->
     <nav class="premium-nav">
         <div class="container nav-container">
-            <!-- Left Menu -->
             <div class="nav-menu left">
                 <a href="dry-cleaning.html" class="nav-link">Dry Cleaning</a>
                 <a href="alterations.html" class="nav-link">Alterations</a>
-                <a href="restoration.html" class="nav-link" style="color: var(--color-gold);">Restoration</a>
+                <a href="repairs.html" class="nav-link">Repairs</a>
             </div>
-
-            <!-- Center Logo -->
             <a href="index.html" class="logo-wrapper">
-                <img src="assets/images/lux-logo.png" alt="Lux Dry Cleaners Logo" class="nav-logo">
-                <div class="logo-glow"></div>
+                <img src="assets/images/lux-logo.png" alt="Lux Logo" class="nav-logo">
             </a>
-
-            <!-- Right Menu -->
             <div class="nav-menu right">
+                <a href="restoration.html" class="nav-link" style="color:var(--color-gold);">Restoration</a>
                 <a href="pricing.html" class="nav-link">Pricing</a>
-                <a href="blog.html" class="nav-link">Blog</a>
-                <a href="index.html#contact" class="nav-btn secondary">Contact</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
             </div>
+            <div class="mobile-menu-btn" id="mobileMenuBtn"><span></span><span></span><span></span></div>
         </div>
     </nav>
+    <div class="mobile-nav-overlay" id="mobileNav">
+        <div class="mobile-nav-links">
+            <a href="index.html" class="mobile-nav-link">Home</a>
+            <a href="dry-cleaning.html" class="mobile-nav-link">Services</a>
+            <a href="pricing.html" class="mobile-nav-link">Pricing</a>
+            <a href="index.html#contact" class="mobile-nav-link">Contact</a>
+        </div>
+    </div>
 
     <!-- Page Header -->
     <header class="page-header">
         <div class="video-overlay-gradient"></div>
         <div class="video-overlay-particles"></div>
-        <h1 class="page-title fade-in-up">Vintage Restoration</h1>
+        <div class="container" style="position:relative; z-index:10; text-align:center;">
+            <h1 class="page-title fade-in-up">Heirloom <span class="text-goldish">Restoration</span></h1>
+            <p class="hero-subhead fade-in-up" style="margin-top:20px; animation-delay:0.2s;">Reviving the past,
+                preserving the future.</p>
+        </div>
     </header>
 
     <!-- Content -->
-    <section class="page-content">
+    <section class="page-content" style="background:#050505;">
         <div class="container">
-            <div class="text-block fade-on-scroll">
-                <h2 class="section-title">Breathing New Life</h2>
-                <p
-                    style="text-align: center; max-width: 800px; margin: 0 auto; color: var(--color-text-muted); font-size: 1.1rem;">
-                    We specialize in the delicate art of restoring vintage and heirloom garments. From yellowed wedding
-                    dresses to moth-damaged wool coats, our restoration experts use time-tested techniques and modern
-                    technology to revitalize your treasured pieces. We handle every item with the utmost care,
-                    preserving its history while refreshing its appearance.
-                </p>
+
+            <div class="process-card fade-up-trigger">
+                <div class="process-image-box">
+                    <img src="assets/images/resto-leather.png" alt="Leather Restoration" class="process-img">
+                </div>
+                <div class="process-content">
+                    <h2 class="process-title">Leather & Suede Revival</h2>
+                    <p class="process-desc">
+                        Vintage leather bags and jackets tell a story, but time can fade their rich patina. Our artisans
+                        clean, re-dye, and condition your leather goods, bringing back their original luster while
+                        preserving their character.
+                    </p>
+                </div>
             </div>
 
-            <div class="services-grid" style="margin-top: 60px;">
-                <div class="service-card fade-on-scroll delay-100">
-                    <div class="card-border-glow"></div>
-                    <div class="card-content">
-                        <h3>Wedding Dress Preservation</h3>
-                        <p>Cleaning and boxing services to preserve your gown for generations to come.</p>
-                    </div>
+            <div class="process-card reverse fade-up-trigger">
+                <div class="process-image-box">
+                    <img src="assets/images/resto-lace.png" alt="Bridal Lace Repair" class="process-img">
                 </div>
-                <div class="service-card fade-on-scroll delay-200">
-                    <div class="card-border-glow"></div>
-                    <div class="card-content">
-                        <h3>Leather & Suede</h3>
-                        <p>Specialist cleaning and re-oiling to restore softness and color to leather goods.</p>
-                    </div>
-                </div>
-                <div class="service-card fade-on-scroll delay-300">
-                    <div class="card-border-glow"></div>
-                    <div class="card-content">
-                        <h3>Smoke & Flood Damage</h3>
-                        <p>Ozone treatment and deep cleaning to remove odors and restore damaged fabrics.</p>
-                    </div>
+                <div class="process-content">
+                    <h2 class="process-title">Bridal & Lace Preservation</h2>
+                    <p class="process-desc">
+                        Some garments are too precious to risk. Whether it's a vintage veil or a modern couture gown,
+                        our restoration team uses museum-grade techniques to repair tears, remove yellowing, and
+                        preserve the delicate lace for generations to come.
+                    </p>
                 </div>
             </div>
+
+            <!-- CTA -->
+            <div style="text-align:center; margin-top:100px;">
+                <h2 style="font-size:2.5rem; margin-bottom:40px; color:#fff;">Have a precious item?</h2>
+                <a href="index.html#contact" class="liquid-metal-btn liquid-gold">Get a Quote</a>
+            </div>
+
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="simple-footer">
-        <p>&copy; 2024 Lux Dry Cleaners. Excellence in every fiber.</p>
+    <footer class="lux-footer-premium">
+        <div class="container">
+            <div class="social-orb-container">
+                <a href="#" class="social-orb"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg></a>
+                <a href="#" class="social-orb"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                    </svg></a>
+                <a href="#" class="social-orb"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path
+                            d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                        </path>
+                    </svg></a>
+            </div>
+            <p class="footer-copy" style="color:#555; text-transform:uppercase; letter-spacing:2px; font-size:0.8rem;">
+                &copy; 2024 Lux Dry Cleaners. Excellence in every fiber.</p>
+        </div>
     </footer>
-
-    <!-- Chat Widget -->
-    <div class="chat-widget fade-in-up delay-500">
-        <div class="chat-toggle">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-            </svg>
-        </div>
-        <div class="chat-message">
-            Hi! How can we help? 👋
-        </div>
-    </div>
-
     <script src="js/main.js"></script>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('in-view');
+            });
+        }, { threshold: 0.3 });
+        document.querySelectorAll('.fade-up-trigger').forEach(el => observer.observe(el));
+    </script>
 </body>
 
 </html>

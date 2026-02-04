@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // --- Loader ---
     const loader = document.getElementById('loader');
-    
+
     // Simulate initial load (or wait for video to buffer slightly)
     setTimeout(() => {
         loader.classList.add('hidden');
@@ -26,6 +26,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const fadeElements = document.querySelectorAll('.fade-in-up, .fade-on-scroll');
     fadeElements.forEach(el => observer.observe(el));
+
+    // --- Dedicated Observer for '.fade-up-trigger' (adds 'in-view') ---
+    const fadeUpObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                fadeUpObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.fade-up-trigger').forEach(el => fadeUpObserver.observe(el));
 
     // --- Hero Animations Trigger ---
     function triggerHeroAnimations() {
@@ -54,7 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-});
 
     // --- FAQ Accordion ---
     const faqItems = document.querySelectorAll('.faq-item');
@@ -73,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Toggle current
             item.classList.toggle('active');
-            
+
             const answer = item.querySelector('.faq-answer');
             if (item.classList.contains('active')) {
                 answer.style.maxHeight = answer.scrollHeight + 'px';
@@ -96,14 +107,14 @@ document.addEventListener('DOMContentLoaded', () => {
         nextBtn.addEventListener('click', () => {
             track.scrollBy({ left: 350, behavior: 'smooth' });
         });
-        
+
         // Auto-scroll loop for magnificence
         let autoScroll = setInterval(() => {
-             if (track.scrollLeft + track.offsetWidth >= track.scrollWidth) {
-                 track.scrollTo({ left: 0, behavior: 'smooth' });
-             } else {
-                 track.scrollBy({ left: 350, behavior: 'smooth' });
-             }
+            if (track.scrollLeft + track.offsetWidth >= track.scrollWidth) {
+                track.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+                track.scrollBy({ left: 350, behavior: 'smooth' });
+            }
         }, 4000); // Scroll every 4 seconds
 
         track.addEventListener('mouseenter', () => clearInterval(autoScroll));
@@ -118,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileBtn.addEventListener('click', () => {
             mobileBtn.classList.toggle('active');
             mobileNav.classList.toggle('active');
-            
+
             // Toggle Body Scroll
             if (mobileNav.classList.contains('active')) {
                 document.body.style.overflow = 'hidden';
@@ -136,3 +147,27 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+    // --- Background Color Triggers ---
+    const bgObserverOptions = {
+        threshold: 0.2, // Trigger earlier
+        rootMargin: "0px 0px -20% 0px"
+    };
+
+    const bgObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Remove all bg classes
+                document.body.classList.remove('bg-green', 'bg-blue', 'bg-gold');
+
+                // Add new class if defined
+                const bgClass = entry.target.getAttribute('data-bg');
+                if (bgClass) {
+                    document.body.classList.add(bgClass);
+                }
+            }
+        });
+    }, bgObserverOptions);
+
+    // Observe all sections with data-bg
+    document.querySelectorAll('[data-bg]').forEach(el => bgObserver.observe(el));
+});
