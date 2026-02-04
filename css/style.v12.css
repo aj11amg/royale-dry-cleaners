@@ -1917,10 +1917,20 @@ a {
     }
 
     /* Hero Section */
+    .hero-content {
+        text-align: center;
+        /* Ensure container is centered */
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+
     .hero-headline {
         font-size: 2.5rem;
         /* Reduced so "Done Properly" fits better */
         margin-bottom: 25px;
+        text-align: center;
+        /* Explicit center */
     }
 
     .hero-subhead {
@@ -1938,6 +1948,10 @@ a {
         display: flex;
         flex-direction: column;
         gap: 5px;
+        align-items: center;
+        /* Center the stack */
+        width: 100%;
+        text-align: center;
     }
 
     .hero-cta-group {
