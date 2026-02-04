@@ -2091,13 +2091,16 @@ a {
 
     .hero-cta-group {
         flex-direction: column;
-        width: 100%;
         gap: 20px;
         align-items: center;
         /* Center buttons */
+        position: relative;
+        left: 50%;
+        right: 50%;
+        width: 100vw !important;
+        margin-left: -50vw !important;
+        margin-right: -50vw !important;
         padding: 0 !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
     }
 
     .hero-cta-group .liquid-metal-btn {
