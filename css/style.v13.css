@@ -8,9 +8,17 @@
     height: 54px;
     padding: 0 40px;
     border-radius: 9999px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     text-decoration: none;
     cursor: pointer;
     overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(12px);
+    border: 1.5px solid transparent;
+    will-change: transform, box-shadow, border-color;
     gap: 10px;
     /* Even spacing between items */
 
@@ -18,7 +26,6 @@
     color: white;
     font-family: var(--font-heading, serif);
     font-weight: 700;
-    font-size: 14px;
     letter-spacing: 2px;
     text-transform: uppercase;
     text-shadow: 0 0 5px currentColor;
@@ -356,6 +363,7 @@ a {
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
     overflow: hidden;
 }
 
@@ -828,6 +836,17 @@ a {
 
     .hero-headline {
         font-size: 3rem;
+    }
+
+    .hero-cta-group {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .liquid-metal-btn {
+        width: 100%;
+        max-width: 320px;
     }
 
     .nav-container {
@@ -2100,21 +2119,22 @@ a {
     .hero-cta-group {
         flex-direction: column;
         width: 100%;
+        max-width: 100%;
         gap: 20px;
         align-items: center;
         justify-content: center;
-        padding: 0 !important;
+        padding: 0 20px !important;
         margin-left: 0 !important;
         margin-right: 0 !important;
+        box-sizing: border-box;
     }
 
     .hero-cta-group .liquid-metal-btn {
-        width: auto;
+        width: 100%;
         min-width: 260px;
         max-width: 320px;
         padding: 0 30px;
-        margin-left: auto !important;
-        margin-right: auto !important;
+        box-sizing: border-box;
     }
 
     /* Services & Cards */

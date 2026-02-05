@@ -733,6 +733,17 @@ a {
         font-size: 3rem;
     }
 
+    .hero-cta-group {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 320px;
+    }
+
     .nav-container {
         flex-direction: column;
         height: auto;
