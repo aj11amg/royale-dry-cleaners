@@ -10,7 +10,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="css/style.v12.css?v=1770180001">
+    <link rel="stylesheet" href="css/style.v13.css?v=8">
+    <link rel="stylesheet" href="css/premium-buttons.css?v=5">
 </head>
 
 <body>
@@ -48,28 +49,87 @@
         </div>
     </div>
 
-    <!-- Page Header -->
-    <header class="page-header">
-        <div class="video-overlay-gradient"></div>
-        <div class="video-overlay-particles"></div>
-        <div class="container" style="position:relative; z-index:10; text-align:center;">
-            <h1 class="page-title fade-in-up">Heirloom <span class="text-goldish">Restoration</span></h1>
-            <p class="hero-subhead fade-in-up" style="margin-top:20px; animation-delay:0.2s;">Reviving the past,
-                preserving the future.</p>
+    <!-- Page Header with Video Background -->
+    <header class="page-header" style="position: relative; height: 80vh; min-height: 600px; overflow: hidden;">
+        <!-- Background Video -->
+        <video autoplay muted loop playsinline class="hero-bg-video"
+            style="position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto; transform: translate(-50%, -50%); object-fit: cover; z-index: 1;">
+            <source src="assets/videos/restoration.mp4" type="video/mp4">
+        </video>
+
+        <!-- Overlays for depth and atmosphere -->
+        <div class="video-overlay-gradient"
+            style="position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(5,5,5,0.7) 50%, rgba(5,5,5,0.95) 100%); z-index: 2;">
+        </div>
+        <div class="video-overlay-particles"
+            style="position: absolute; inset: 0; background: url('data:image/svg+xml,%3Csvg width=&quot;100&quot; height=&quot;100&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Ccircle cx=&quot;2&quot; cy=&quot;2&quot; r=&quot;1&quot; fill=&quot;%23ffffff&quot; opacity=&quot;0.1&quot;/%3E%3C/svg%3E'); opacity: 0.3; z-index: 3; animation: particleFloat 20s ease-in-out infinite;">
+        </div>
+
+        <!-- Hero Content -->
+        <div class="container"
+            style="position: relative; z-index: 10; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+            <h1 class="page-title fade-in-up"
+                style="font-size: clamp(3rem, 6vw, 5rem); line-height: 1.1; margin-bottom: 30px;">
+                Heirloom <span class="text-goldish">Restoration</span>
+            </h1>
+            <p class="hero-subhead fade-in-up delay-100"
+                style="font-size: 1.2rem; color: rgba(255,255,255,0.9); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 40px; text-shadow: 0 0 20px rgba(250, 204, 21, 0.3), 0 2px 8px rgba(0, 0, 0, 0.5);">
+                Reviving the past, preserving the future.
+            </p>
+
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator fade-in-up delay-200"
+                style="position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); animation: bounce 2s ease-in-out infinite;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    style="color: var(--color-gold); filter: drop-shadow(0 0 10px rgba(250, 204, 21, 0.5));">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </div>
         </div>
     </header>
 
+    <style>
+        @keyframes particleFloat {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+        }
+    </style>
+
     <!-- Content -->
-    <section class="page-content" style="background:#050505;">
+    <section class="page-content" style="background:#050505; padding: 100px 0;">
         <div class="container">
 
-            <div class="process-card fade-up-trigger">
-                <div class="process-image-box">
-                    <img src="assets/images/resto-leather.png" alt="Leather Restoration" class="process-img">
+            <div class="process-card fade-up-trigger" style="margin-bottom: 80px;">
+                <div class="process-image-box" style="overflow: hidden; border-radius: 12px;">
+                    <img src="assets/images/resto-leather.png" alt="Leather Restoration" class="process-img"
+                        style="transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1); will-change: transform;">
                 </div>
                 <div class="process-content">
-                    <h2 class="process-title">Leather & Suede Revival</h2>
-                    <p class="process-desc">
+                    <h2 class="process-title"
+                        style="font-size: clamp(1.8rem, 3vw, 2.5rem); margin-bottom: 20px; background: linear-gradient(135deg, #FFFFFF 0%, var(--color-gold) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                        Leather & Suede Revival
+                    </h2>
+                    <p class="process-desc" style="font-size: 1.1rem; line-height: 1.8; color: rgba(255,255,255,0.8);">
                         Vintage leather bags and jackets tell a story, but time can fade their rich patina. Our artisans
                         clean, re-dye, and condition your leather goods, bringing back their original luster while
                         preserving their character.
@@ -77,13 +137,17 @@
                 </div>
             </div>
 
-            <div class="process-card reverse fade-up-trigger">
-                <div class="process-image-box">
-                    <img src="assets/images/resto-lace.png" alt="Bridal Lace Repair" class="process-img">
+            <div class="process-card reverse fade-up-trigger" style="margin-bottom: 80px;">
+                <div class="process-image-box" style="overflow: hidden; border-radius: 12px;">
+                    <img src="assets/images/resto-lace.png" alt="Bridal Lace Repair" class="process-img"
+                        style="transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1); will-change: transform;">
                 </div>
                 <div class="process-content">
-                    <h2 class="process-title">Bridal & Lace Preservation</h2>
-                    <p class="process-desc">
+                    <h2 class="process-title"
+                        style="font-size: clamp(1.8rem, 3vw, 2.5rem); margin-bottom: 20px; background: linear-gradient(135deg, #FFFFFF 0%, var(--color-gold) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                        Bridal & Lace Preservation
+                    </h2>
+                    <p class="process-desc" style="font-size: 1.1rem; line-height: 1.8; color: rgba(255,255,255,0.8);">
                         Some garments are too precious to risk. Whether it's a vintage veil or a modern couture gown,
                         our restoration team uses museum-grade techniques to repair tears, remove yellowing, and
                         preserve the delicate lace for generations to come.
@@ -92,13 +156,58 @@
             </div>
 
             <!-- CTA -->
-            <div style="text-align:center; margin-top:100px;">
-                <h2 style="font-size:2.5rem; margin-bottom:40px; color:#fff;">Have a precious item?</h2>
-                <a href="index.html#contact" class="liquid-metal-btn liquid-gold">Get a Quote</a>
+            <div class="fade-up-trigger"
+                style="text-align:center; margin-top:120px; padding: 60px 40px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(0,0,0,0.3) 100%); border-radius: 20px; border: 1px solid rgba(212, 175, 55, 0.2); position: relative; overflow: hidden;">
+                <!-- Animated background glow -->
+                <div
+                    style="position: absolute; top: 50%; left: 50%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 70%); transform: translate(-50%, -50%); filter: blur(60px); animation: pulse 4s ease-in-out infinite; z-index: 0;">
+                </div>
+
+                <div style="position: relative; z-index: 1;">
+                    <h2
+                        style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 20px; color:#fff; font-family: var(--font-heading); background: linear-gradient(135deg, #FFFFFF 0%, var(--color-gold) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                        Have a precious item?
+                    </h2>
+                    <p
+                        style="font-size: 1.1rem; color: rgba(255,255,255,0.7); margin-bottom: 40px; letter-spacing: 1px;">
+                        Let our master craftsmen restore it to its former glory
+                    </p>
+                    <a href="index.html#contact" class="liquid-metal-btn liquid-gold"
+                        style="display: inline-flex; align-items: center; gap: 10px;">
+                        Get a Quote
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </div>
             </div>
 
         </div>
     </section>
+
+    <style>
+        /* Image zoom on hover */
+        .process-card:hover .process-img {
+            transform: scale(1.1);
+        }
+
+        /* Pulse animation for CTA background */
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.6;
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+        }
+    </style>
 
     <!-- Footer -->
     <footer class="lux-footer-premium">
