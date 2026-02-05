@@ -94,18 +94,57 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Carousel Logic ---
+    // --- Carousel Logic with Active Item Detection ---
     const track = document.getElementById('serviceCarousel');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
 
     if (track && prevBtn && nextBtn) {
+        const items = track.querySelectorAll('.carousel-item');
+
+        // Function to detect which item is centered/active
+        function updateActiveItem() {
+            const trackRect = track.getBoundingClientRect();
+            const trackCenter = trackRect.left + trackRect.width / 2;
+
+            let closestItem = null;
+            let closestDistance = Infinity;
+
+            items.forEach(item => {
+                const itemRect = item.getBoundingClientRect();
+                const itemCenter = itemRect.left + itemRect.width / 2;
+                const distance = Math.abs(trackCenter - itemCenter);
+
+                if (distance < closestDistance) {
+                    closestDistance = distance;
+                    closestItem = item;
+                }
+
+                item.classList.remove('active');
+            });
+
+            if (closestItem) {
+                closestItem.classList.add('active');
+            }
+        }
+
+        // Update on scroll
+        track.addEventListener('scroll', updateActiveItem);
+
+        // Update on load
+        setTimeout(updateActiveItem, 100);
+
+        // Navigation buttons
         prevBtn.addEventListener('click', () => {
-            track.scrollBy({ left: -350, behavior: 'smooth' });
+            const scrollAmount = track.offsetWidth > 768 ? 350 : track.offsetWidth - 60;
+            track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            setTimeout(updateActiveItem, 500);
         });
 
         nextBtn.addEventListener('click', () => {
-            track.scrollBy({ left: 350, behavior: 'smooth' });
+            const scrollAmount = track.offsetWidth > 768 ? 350 : track.offsetWidth - 60;
+            track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            setTimeout(updateActiveItem, 500);
         });
 
         // Auto-scroll loop for magnificence
@@ -113,11 +152,16 @@ document.addEventListener('DOMContentLoaded', () => {
             if (track.scrollLeft + track.offsetWidth >= track.scrollWidth) {
                 track.scrollTo({ left: 0, behavior: 'smooth' });
             } else {
-                track.scrollBy({ left: 350, behavior: 'smooth' });
+                const scrollAmount = track.offsetWidth > 768 ? 350 : track.offsetWidth - 60;
+                track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
             }
-        }, 4000); // Scroll every 4 seconds
+            setTimeout(updateActiveItem, 500);
+        }, 5000); // Scroll every 5 seconds
 
         track.addEventListener('mouseenter', () => clearInterval(autoScroll));
+
+        // Update on window resize
+        window.addEventListener('resize', updateActiveItem);
     }
 
     // --- Mobile Menu Toggle ---

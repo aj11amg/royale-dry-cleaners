@@ -889,6 +889,7 @@ a {
 .carousel-container {
     padding: 20px 0;
     overflow: visible;
+    position: relative;
 }
 
 .carousel-track {
@@ -902,6 +903,8 @@ a {
     /* Hide scrollbar IE/Edge */
     scrollbar-width: none;
     /* Hide scrollbar Firefox */
+    /* Add smooth momentum scrolling for iOS */
+    -webkit-overflow-scrolling: touch;
 }
 
 .carousel-track::-webkit-scrollbar {
@@ -914,18 +917,44 @@ a {
     flex: 0 0 350px;
     height: 500px;
     position: relative;
-    border-radius: 8px;
+    border-radius: 12px;
     overflow: hidden;
     scroll-snap-align: center;
-    transition: transform 0.5s ease;
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
     cursor: pointer;
+    transform-origin: center;
+}
+
+/* AGGRESSIVE GLOW on Active/Centered Item - Subtle version */
+.carousel-item.active {
+    /* Just a subtle indicator that this is centered, not aggressive glow */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* Remove the aggressive glow animation from active - save it only for hover */
+.carousel-item.active::before {
+    display: none;
+}
+
+@keyframes activeGlow {
+
+    0%,
+    100% {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
 }
 
 .carousel-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.7s ease;
+    transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .carousel-overlay {
@@ -940,7 +969,7 @@ a {
     justify-content: flex-end;
     padding: 30px;
     opacity: 1;
-    transition: all 0.5s ease;
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .carousel-title {
@@ -949,7 +978,7 @@ a {
     margin-bottom: 10px;
     font-family: var(--font-heading);
     transform: translateY(20px);
-    transition: transform 0.5s ease;
+    transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .carousel-desc {
@@ -957,7 +986,7 @@ a {
     font-size: 0.9rem;
     transform: translateY(20px);
     opacity: 0;
-    transition: all 0.5s ease 0.1s;
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1) 0.1s;
 }
 
 .carousel-item:hover img {
@@ -970,8 +999,33 @@ a {
     opacity: 1;
 }
 
+/* AGGRESSIVE GLOW on Hover */
 .carousel-item:hover {
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transform: scale(1.08);
+    box-shadow:
+        0 0 60px rgba(250, 204, 21, 0.8),
+        0 0 120px rgba(250, 204, 21, 0.5),
+        0 0 180px rgba(202, 138, 4, 0.3),
+        0 20px 60px -10px rgba(0, 0, 0, 0.6);
+    border: 2px solid rgba(250, 204, 21, 0.6);
+    z-index: 10;
+}
+
+.carousel-item:hover::before {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.carousel-item:hover .carousel-title {
+    text-shadow:
+        0 0 20px rgba(250, 204, 21, 0.6),
+        0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.carousel-item:hover .carousel-title,
+.carousel-item:hover .carousel-desc {
+    transform: translateY(0);
+    opacity: 1;
 }
 
 .carousel-nav {
@@ -1001,9 +1055,50 @@ a {
 }
 
 @media (max-width: 768px) {
+    .carousel-container {
+        padding: 20px 0;
+        overflow: visible;
+    }
+
+    .carousel-track {
+        padding: 0 20px;
+        gap: 20px;
+        /* Ensure first item starts visible */
+        scroll-padding-inline-start: 20px;
+    }
+
     .carousel-item {
-        flex: 0 0 85vw;
-        height: 400px;
+        flex: 0 0 calc(100vw - 80px);
+        max-width: 400px;
+        height: 450px;
+    }
+
+    /* Slightly reduced glow on mobile for performance */
+    .carousel-item.active {
+        transform: scale(1.05);
+        box-shadow:
+            0 0 40px rgba(250, 204, 21, 0.7),
+            0 0 80px rgba(250, 204, 21, 0.4),
+            0 15px 50px -10px rgba(0, 0, 0, 0.6);
+    }
+
+    .carousel-item.active::before {
+        inset: -20px;
+        filter: blur(30px);
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+
+    .carousel-item,
+    .carousel-item img,
+    .carousel-overlay,
+    .carousel-title,
+    .carousel-desc,
+    .carousel-item.active::before {
+        animation: none !important;
+        transition: opacity 0.2s ease, transform 0.2s ease;
     }
 }
 
