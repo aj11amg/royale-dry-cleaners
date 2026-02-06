@@ -167,6 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Mobile Menu Toggle ---
     const mobileBtn = document.getElementById('mobileMenuBtn');
     const mobileNav = document.getElementById('mobileNav');
+    const mobileNavClose = document.getElementById('mobileNavClose');
     const mobileLinks = document.querySelectorAll('.mobile-nav-link');
 
     if (mobileBtn && mobileNav) {
@@ -181,6 +182,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.body.style.overflow = '';
             }
         });
+
+        // Close button handler
+        if (mobileNavClose) {
+            mobileNavClose.addEventListener('click', () => {
+                mobileBtn.classList.remove('active');
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        }
 
         // Close menu when a link is clicked
         mobileLinks.forEach(link => {
